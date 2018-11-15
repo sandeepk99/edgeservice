@@ -1,0 +1,11 @@
+applications:
+- name: gatewayservice
+  instances: 1
+  path: target/edgeservice-0.0.1-SNAPSHOT.jar
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: https://eureka-f9e5c87f-099c-4923-ad3f-6e732286f0a1.cfapps.io
