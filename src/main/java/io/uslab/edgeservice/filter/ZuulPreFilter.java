@@ -23,10 +23,8 @@ public class ZuulPreFilter extends com.netflix.zuul.ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-       // return true;
-        RequestContext ctx = RequestContext.getCurrentContext();
-        return !ctx.containsKey("FORWARD_TO_KEY") // a filter has already forwarded
-                && !ctx.containsKey("SERVICE_ID_KEY");
+       return true;
+
     }
 
     @Override
@@ -34,7 +32,6 @@ public class ZuulPreFilter extends com.netflix.zuul.ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         logger.info("The context path test --> "+ request.getContextPath());
-        System.out.println("MY TEST OF ZUUL...");
         System.out.println("Sandeep Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
         if (request.getParameter("sample") != null) {
             // put the serviceId in `RequestContext`
